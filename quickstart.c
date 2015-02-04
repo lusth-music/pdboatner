@@ -15,6 +15,7 @@ char *PROGRAM_VERSION = "0.01";
 
 static int last = 0;
 
+
 int drumbeatVerse(){
     int spot = getLocation();
     
@@ -32,61 +33,67 @@ int drumbeatChorus(){
 }
 
 int chorusChords(int instrument, int octave){
+    // Need these to create a shuffle rhythm.
+    double twoThirdsQ = ((double) 2 / 3) * Q;
+    double oneThirdQ = ((double) 1 / 3) * Q;
 
     setAmplitude(0.30);
-    c(1, Q + I, instrument, octave);
+    c(1, Q + twoThirdsQ, instrument, octave);
     setAmplitude(0.25);
-    c(1, Q + I, instrument, octave);
+    c(1, Q + oneThirdQ, instrument, octave);
     c(1, Q, instrument, octave);
 
     setAmplitude(0.30);
-    ci6(3, Q + I, instrument, octave); 
+    ci6(3, Q + twoThirdsQ, instrument, octave); 
     setAmplitude(0.25);
-    ci6(3, Q + I, instrument, octave); 
+    ci6(3, Q + oneThirdQ, instrument, octave); 
     ci6(3, Q, instrument, octave); 
     
     
     setAmplitude(0.30);
-    ci1(4, Q + I, instrument, octave-1);
+    ci1(4, Q + twoThirdsQ, instrument, octave-1);
     setAmplitude(0.25);
-    ci1(4, Q + I, instrument, octave-1);
+    ci1(4, Q + oneThirdQ, instrument, octave-1);
     ci1(4, Q, instrument, octave-1);
     
     setAmplitude(0.30);
 //    ci1(5, Q + I, instrument, octave-1); 
-    cchord(5, Q + I, instrument, octave-1, "Osx"); 
+    cchord(5, Q + twoThirdsQ, instrument, octave-1, "Osx"); 
     setAmplitude(0.25);
-    ci1(5, Q + I, instrument, octave-1); 
+    ci1(5, Q + oneThirdQ, instrument, octave-1); 
     ci1(5, Q, instrument, octave-1); 
 
     setAmplitude(0.30);
 }
 
 int verseChords(int instrument, int octave){
+    // Need these to create a shuffle rhythm.
+    double twoThirdsQ = ((double) 2 / 3) * Q;
+    double oneThirdQ = ((double) 1 / 3) * Q;
 
     setAmplitude(0.30);
-    c(1, Q + I, instrument, octave);
+    c(1, Q + twoThirdsQ, instrument, octave);
     setAmplitude(0.25);
-    c(1, Q + I, instrument, octave);
+    c(1, Q + oneThirdQ, instrument, octave);
     c(1, Q, instrument, octave);
 
     setAmplitude(0.30);
-    ci1(5, Q + I, instrument, octave-1); 
+    ci1(5, Q + twoThirdsQ, instrument, octave-1); 
     setAmplitude(0.25);
-    ci1(5, Q + I, instrument, octave-1); 
+    ci1(5, Q + oneThirdQ, instrument, octave-1); 
     ci1(5, Q, instrument, octave-1); 
     
     
     setAmplitude(0.30);
-    ci1(4, Q + I, instrument, octave-1);
+    ci1(4, Q + twoThirdsQ, instrument, octave-1);
     setAmplitude(0.25);
-    ci1(4, Q + I, instrument, octave-1);
+    ci1(4, Q + oneThirdQ, instrument, octave-1);
     ci1(4, Q, instrument, octave-1);
     
     setAmplitude(0.30);
-    ci1(5, Q + I, instrument, octave-1); 
+    ci1(5, Q + twoThirdsQ, instrument, octave-1); 
     setAmplitude(0.25);
-    ci1(5, Q + I, instrument, octave-1); 
+    ci1(5, Q + oneThirdQ, instrument, octave-1); 
     ci1(5, Q, instrument, octave-1); 
 
     setAmplitude(0.30);
