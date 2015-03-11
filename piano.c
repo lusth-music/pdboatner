@@ -10,27 +10,10 @@
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
 
-char *PROGRAM_NAME = "quickstart";
+char *PROGRAM_NAME = "piano";
 char *PROGRAM_VERSION = "0.01";
 
 static int last = 0;
-
-
-int drumbeatVerse(){
-    int spot = getLocation();
-    
-    drumkitHHClosed(1,0.4,"x-x-x-x-", SX); setLocation(spot);
-    drumkitKick    (1,2,  "x--x--x-", SX); 
-}
-
-int drumbeatChorus(){
-    int spot = getLocation();
-    
-    drumkitHHClosed(1,0.25,"xxx-xx-x", SX); setLocation(spot);
-    drumkitHHOpen  (1,0.25,"---x--x-", SX); setLocation(spot);
-    drumkitSnare   (1,1,   "--xx--x-", SX); setLocation(spot);
-    drumkitKick    (1,2,   "x----x--", SX); 
-}
 
 int chorusChords(int instrument, int octave){
 
@@ -107,6 +90,8 @@ int chorusChords(int instrument, int octave){
     c(1, Q, instrument, octave);
 
     setAmplitude(0.30);
+
+    return 1;
 }
 
 int verseChords(int instrument, int octave){
@@ -136,6 +121,8 @@ int verseChords(int instrument, int octave){
     ci1(5, Q, instrument, octave-1); 
 
     setAmplitude(0.30);
+
+    return 1;
 }
 
 int
@@ -154,21 +141,8 @@ main()
     setSustain(0.99995);
     setAmplitude(0.3);
 
-    openOutput("quickstart.rra",0,0);
+    openOutput("piano.rra",0,0);
 
-
-    int location = getLocation();
-
-    int i;
-//    for(i = 0; i < 4; i++){
-//        drumbeatVerse();
-//    }
-
-    for(i = 0; i < 24; i++){
-        drumbeatChorus();
-    }
-
-    setLocation(location);
 
 //    verseChords(instrument, octave);
     chorusChords(instrument, octave);

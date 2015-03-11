@@ -1,7 +1,7 @@
 #Place the names of all your tracks here (as RRA filenames)
 
-RRA = quickstart.rra
-SRRA = s-quickstart.rra
+RRA = piano.rra drums.rra
+SRRA = stereo.rra
 INCLUDE=/usr/local/include/songlib/
 LIB=/usr/local/lib/
 
