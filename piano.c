@@ -17,79 +17,104 @@ static int last = 0;
 
 int chorusChords(int instrument, int octave){
 
-    int progression[18] = {1,1,3,3,4,4,5,5,1,1,3,3,4,4,5,5,4,5};
+    int progression[16] = {1,1,3,3,4,4,5,5,1,1,3,3,4,4,5,5};
 
     int i;
-    for(i = 0; i < 18; i++){
+    for(i = 0; i < 16; i++){
 
         switch(progression[i]){
         case 1:
-            setAmplitude(0.30);
-            c(1, Qd, instrument, octave);
-            setAmplitude(0.25);
+            n(1, Qd, instrument, octave - 1, 0);
             c(1, Qd, instrument, octave);
             c(1, Q, instrument, octave);
 
             break;
         case 3:
-            setAmplitude(0.30);
-            ci6(3, Qd, instrument, octave); 
-            setAmplitude(0.25);
+            n(3, Qd, instrument, octave - 1, 0); 
             ci6(3, Qd, instrument, octave); 
             ci6(3, Q, instrument, octave); 
 
             break;
         case 4:
-            setAmplitude(0.30);
-            ci1(4, Qd, instrument, octave-1);
-            setAmplitude(0.25);
+            n(4, Qd, instrument, octave - 1, 0);
             ci1(4, Qd, instrument, octave-1);
             ci1(4, Q, instrument, octave-1);
 
             break;
         case 5:
-            setAmplitude(0.30);
-            ci1(5, Qd, instrument, octave-1);
-            setAmplitude(0.25);
+            n(5, Qd, instrument, octave - 1, 0);
             ci1(5, Qd, instrument, octave-1);
             ci1(5, Q, instrument, octave-1);
 
             break;
         }
     }
+
+    float volumeFull = 0.3;
+    float volumeSoft = 0.15;
     
-    setAmplitude(0.30);
-    c(6, Qd, instrument, octave-1);
-    setAmplitude(0.25);
+    ci1(4, Qd, instrument, octave-1);
+    backwards(Qd); 
+    setAmplitude(volumeSoft);
+    n(4, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
+    ci1(4, Qd, instrument, octave-1);
+    ci1(4, Q, instrument, octave-1);
+
+    ci1(5, Qd, instrument, octave-1);
+    backwards(Qd); 
+    setAmplitude(volumeSoft);
+    n(5, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
     ci1(5, Qd, instrument, octave-1);
     ci1(5, Q, instrument, octave-1);
 
-    setAmplitude(0.30);
+
+    c(6, Qd, instrument, octave-1);
+    backwards(Qd); 
+    setAmplitude(volumeSoft);
+    n(6, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
+    ci1(5, Qd, instrument, octave-1);
+    backwards(Qd);
+    setAmplitude(volumeSoft);
+    n(5, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
+    ci1(5, Q, instrument, octave-1);
+
     ci1(4, Qd, instrument, octave-1);
-    setAmplitude(0.25);
+    backwards(Qd);
+    setAmplitude(volumeSoft);
+    n(4, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
     ci1(4, Qd, instrument, octave-1);
     ci1(4, Q, instrument, octave-1);
   
-    setAmplitude(0.30);
     ci1(4, Qd, instrument, octave-1);
-    setAmplitude(0.25);
+    backwards(Qd);
+    setAmplitude(volumeSoft);
+    n(4, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
     ci1(4, Qd, instrument, octave-1);
     ci1(4, Q, instrument, octave-1);
   
 
-    setAmplitude(0.30);
     cchord(5, Qd, instrument, octave-1, "Osx"); 
-    setAmplitude(0.25);
+    backwards(Qd);
+    setAmplitude(volumeSoft);
+    n(5, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
     ci1(5, Qd, instrument, octave-1); 
     ci1(5, Q, instrument, octave-1); 
 
-    setAmplitude(0.30);
     c(1, Qd, instrument, octave);
-    setAmplitude(0.25);
+    backwards(Qd);
+    setAmplitude(volumeSoft);
+    n(1, Qd, instrument, octave - 1, 0); setAmplitude(volumeFull);
     c(1, Qd, instrument, octave);
     c(1, Q, instrument, octave);
 
-    setAmplitude(0.30);
+    ci1(5, Qd, instrument, octave-1); 
+    backwards(Qd);
+    setAmplitude(volumeSoft);
+    n(5, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
+    ci1(5, Qd, instrument, octave-1); 
+    ci1(5, Q, instrument, octave-1); 
+
+    setAmplitude(volumeFull); // just to be sure
 
     return 1;
 }
