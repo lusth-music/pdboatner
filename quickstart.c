@@ -6,7 +6,7 @@
 
 
 #define dir "/usr/local/share/samples/"
-#define base "mandolin/sample_"
+#define base "piano/bright_"
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
 
@@ -142,7 +142,7 @@ int
 main()
     {
     int instrument;
-    int octave = 2;
+    int octave = 4;
 
     songInit();
 
