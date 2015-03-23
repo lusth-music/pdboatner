@@ -24,21 +24,23 @@ int chorusChords(int instrument, int octave){
 
         switch(progression[i]){
         case 1:
-            n(1, Qd, instrument, octave - 1, 0);
-            c(1, Qd, instrument, octave);
-            c(1, Q, instrument, octave);
+            n(1, Qd, instrument, octave - 1, 0); 
+            c(1, Q, instrument, octave);      
+            b(1, Qd, instrument, octave, "x--", "-x-", "--x", SX);
 
             break;
         case 3:
             n(3, Qd, instrument, octave - 1, 0); 
-            ci6(3, Qd, instrument, octave); 
-            ci6(3, Q, instrument, octave); 
+            cchord(3, Q,  instrument, octave, "xxY");
+            b     (3, Qd, instrument, octave, "--Y", "x--", "-x-", SX);
 
             break;
         case 4:
             n(4, Qd, instrument, octave - 1, 0);
-            ci1(4, Qd, instrument, octave-1);
-            ci1(4, Q, instrument, octave-1);
+            //ci1(4, Qd, instrument, octave-1);
+            cchord(4, Q, instrument, octave-1, "Xxx");
+            //ci1(4, Q, instrument, octave-1);
+            b     (4, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
 
             break;
         case 5:
@@ -93,7 +95,7 @@ int chorusChords(int instrument, int octave){
     ci1(4, Q, instrument, octave-1);
   
 
-    cchord(5, Qd, instrument, octave-1, "Osx"); 
+    cchord(5, Qd, instrument, octave-1, "Xsx"); 
     backwards(Qd);
     setAmplitude(volumeSoft);
     n(5, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
