@@ -37,16 +37,14 @@ int chorusChords(int instrument, int octave){
             break;
         case 4:
             n(4, Qd, instrument, octave - 1, 0);
-            //ci1(4, Qd, instrument, octave-1);
             cchord(4, Q, instrument, octave-1, "Xxx");
-            //ci1(4, Q, instrument, octave-1);
             b     (4, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
 
             break;
         case 5:
             n(5, Qd, instrument, octave - 1, 0);
-            ci1(5, Qd, instrument, octave-1);
-            ci1(5, Q, instrument, octave-1);
+            cchord(5, Q, instrument, octave-1, "Xxx");
+            b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
 
             break;
         }
@@ -55,68 +53,62 @@ int chorusChords(int instrument, int octave){
     float volumeFull = 0.3;
     float volumeSoft = 0.15;
     
-    ci1(4, Qd, instrument, octave-1);
-    backwards(Qd); 
+
     setAmplitude(volumeSoft);
     n(4, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
-    ci1(4, Qd, instrument, octave-1);
-    ci1(4, Q, instrument, octave-1);
-
-    ci1(5, Qd, instrument, octave-1);
     backwards(Qd); 
+    cchord(4, Qd, instrument, octave-1, "Xxx");
+    cchord(4, Q, instrument, octave-1, "Xxx");
+    b     (4, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
+
     setAmplitude(volumeSoft);
     n(5, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
-    ci1(5, Qd, instrument, octave-1);
-    ci1(5, Q, instrument, octave-1);
-
-
-    c(6, Qd, instrument, octave-1);
     backwards(Qd); 
-    setAmplitude(volumeSoft);
-    n(6, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
-    ci1(5, Qd, instrument, octave-1);
-    backwards(Qd);
-    setAmplitude(volumeSoft);
-    n(5, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
+    cchord(5, Qd, instrument, octave-1, "Xxx");
+    cchord(5, Q, instrument, octave-1, "Xxx");
+    b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
+
+//    c(6, Qd, instrument, octave-1); // Alternative to the broken chord
+    b     (6, Qd, instrument, octave-1, "--x", "-x-", "x--", SX);
+    backwards(Qd); 
+//    setAmplitude(volumeSoft); // Since this is a broken chord, give the bass full volume to compensate and match full chords
+    n(6, Qd, instrument, octave-2, 0); 
+//    setAmplitude(volumeFull);
     ci1(5, Q, instrument, octave-1);
+    backwards(Q);
+    setAmplitude(volumeSoft);
+    n(5, Q, instrument, octave-2, 0); setAmplitude(volumeFull);
+    b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
+    
+    for(i = 0; i < 2; i++){
+        setAmplitude(volumeSoft);
+        n(4, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
+        backwards(Qd); 
+        cchord(4, Qd, instrument, octave-1, "Xxx");
+        cchord(4, Q, instrument, octave-1, "Xxx");
+        b     (4, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
+    }
 
-    ci1(4, Qd, instrument, octave-1);
-    backwards(Qd);
     setAmplitude(volumeSoft);
-    n(4, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
-    ci1(4, Qd, instrument, octave-1);
-    ci1(4, Q, instrument, octave-1);
-  
-    ci1(4, Qd, instrument, octave-1);
-    backwards(Qd);
-    setAmplitude(volumeSoft);
-    n(4, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
-    ci1(4, Qd, instrument, octave-1);
-    ci1(4, Q, instrument, octave-1);
-  
-
-    cchord(5, Qd, instrument, octave-1, "Xsx"); 
-    backwards(Qd);
-    setAmplitude(volumeSoft);
-    n(5, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
-    ci1(5, Qd, instrument, octave-1); 
-    ci1(5, Q, instrument, octave-1); 
+    n(5, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
+    backwards(Qd); 
+    cchord(5, Qd, instrument, octave-1, "Xsx");
+    cchord(5, Q, instrument, octave-1, "Xxx");
+    b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
 
     c(1, Qd, instrument, octave);
     backwards(Qd);
     setAmplitude(volumeSoft);
     n(1, Qd, instrument, octave - 1, 0); setAmplitude(volumeFull);
-    c(1, Qd, instrument, octave);
     c(1, Q, instrument, octave);
+    b(1, Qd, instrument, octave, "x--", "-x-", "--x", SX);
 
-    ci1(5, Qd, instrument, octave-1); 
-    backwards(Qd);
     setAmplitude(volumeSoft);
-    n(5, Qd, instrument, octave-2, 0); setAmplitude(volumeFull);
-    ci1(5, Qd, instrument, octave-1); 
-    ci1(5, Q, instrument, octave-1); 
-
-    setAmplitude(volumeFull); // just to be sure
+    n(5, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
+    backwards(Qd); 
+    cchord(5, Qd, instrument, octave-1, "Xxx");
+    cchord(5, Q, instrument, octave-1, "Xxx");
+    b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
 
     return 1;
 }
