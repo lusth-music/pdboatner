@@ -19,7 +19,7 @@ static int last = 0;
 int drumbeatVerse(){
     int spot = getLocation();
     
-    drumkitHHClosed(1,0.4,"x-x-x-x-", SX); setLocation(spot);
+    drumkitHHClosed(1,0.4,"x-x--xx-", SX); setLocation(spot);
     drumkitKick    (1,2,  "x--x--x-", SX); 
 }
 

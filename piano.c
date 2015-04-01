@@ -114,6 +114,9 @@ int chorusChords(int instrument, int octave){
 }
 
 int verseChords(int instrument, int octave){
+
+    //TODO Change this. Similar to chorus. Follow suspensions and such like when playing the piano.
+
     setAmplitude(0.30);
     c(1, Qd, instrument, octave);
     setAmplitude(0.25);
