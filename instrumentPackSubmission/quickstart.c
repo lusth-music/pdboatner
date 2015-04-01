@@ -6,7 +6,7 @@
 
 
 #define dir "/usr/local/share/samples/"
-#define base "ukulele/concert_"
+#define base "ukulele/concertkoa_"
 
 /* change PROGRAM_NAME and PROGRAM_VERSION appropriately */
 
