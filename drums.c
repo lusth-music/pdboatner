@@ -19,8 +19,9 @@ static int last = 0;
 int drumbeatVerse(){
     int spot = getLocation();
     
-    drumkitHHClosed(1,0.4,"x-x--xx-", SX); setLocation(spot);
-    drumkitKick    (1,2,  "x--x--x-", SX); 
+    drumkitHHOpen  (1,0.25,"------x-", SX); setLocation(spot);
+    drumkitHHClosed(1,0.3, "x-x--x--", SX); setLocation(spot);
+    drumkitKick    (1,2,   "x--x--x-", SX); 
 }
 
 int drumbeatChorus(){
@@ -31,6 +32,60 @@ int drumbeatChorus(){
     drumkitSnare   (1,1,   "--xx--x-", SX); setLocation(spot);
     drumkitKick    (1,2,   "x----x--", SX); 
 }
+
+int drumbeatBridgeSoft(){
+    int spot = getLocation();
+    
+    drumkitHHClosed(1,0.4,"---x--x-", SX); setLocation(spot);
+    drumkitKick    (1,2,  "x-------", SX); 
+}
+
+int bridge(){
+    int i;
+    for(i = 1; i <= 3; i++){
+        drumbeatBridgeSoft();
+    }
+
+    int spot = getLocation();
+    
+    drumkitHHOpen  (1,0.25,"---x--x-", SX); setLocation(spot);
+    drumkitHHClosed(1,0.4, "--x--x--", SX); setLocation(spot);
+    drumkitSnare   (1,1,   "---x--x-", SX); setLocation(spot);
+    drumkitKick    (1,2,   "x-----x-", SX); 
+
+    for(i = 1; i <= 3; i++){
+        drumbeatBridgeSoft();
+    }
+
+    spot = getLocation();
+    drumkitHHOpen  (1,0.5,"---x--x-", SX); setLocation(spot);
+    drumkitHHClosed(1,0.4, "--x--x-x", SX); setLocation(spot);
+    drumkitSnare   (1,1,   "---x--x-", SX); setLocation(spot);
+    drumkitKick    (1,2,   "x-x-x-x-", SX); 
+
+    spot = getLocation();
+    drumkitHHOpen  (1,0.5,"x-x-x-x-", SX); setLocation(spot);
+    drumkitHHClosed(1,0.4, "--------", SX); setLocation(spot);
+    drumkitSnare   (1,1,   "xxxxxxxx", SX); setLocation(spot);
+    drumkitKick    (1,2,   "x-x-x-x-", SX); 
+}
+
+int chorus(){
+    int i;
+
+    for(i = 0; i < 24; i++){
+        drumbeatChorus();
+    }
+}
+
+int verse(){
+    int i;
+
+    for(i = 0; i < 16; i++){
+        drumbeatVerse();
+    }
+}
+
 
 int
 main()
@@ -50,14 +105,11 @@ main()
 
     openOutput("drums.rra",0,0);
 
+    verse();
+//    chorus();
+//    bridge();
 
     int location = getLocation();
-
-    int i;
-
-    for(i = 0; i < 24; i++){
-        drumbeatChorus();
-    }
 
     closeOutput();
     

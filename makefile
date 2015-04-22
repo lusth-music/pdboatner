@@ -22,6 +22,9 @@ play	: $(RRA)
 playmix : mix.rra
 		rplay mix.rra
 
+playdrums : drums.rra
+		rplay drums.rra
+
 s-quickstart.rra : quickstart.rra
 		rrastereo -r quickstart.rra s-quickstart.rra
 
