@@ -13,10 +13,7 @@
 char *PROGRAM_NAME = "drums";
 char *PROGRAM_VERSION = "0.01";
 
-static int last = 0;
-
-
-int drumbeatVerse(){
+void drumbeatVerse(){
     int spot = getLocation();
     
     drumkitHHOpen  (1,0.25,"------x-", SX); setLocation(spot);
@@ -24,7 +21,7 @@ int drumbeatVerse(){
     drumkitKick    (1,2,   "x--x--x-", SX); 
 }
 
-int drumbeatChorus(){
+void drumbeatChorus(){
     int spot = getLocation();
     
     drumkitHHClosed(1,0.25,"xxx-xx-x", SX); setLocation(spot);
@@ -33,14 +30,14 @@ int drumbeatChorus(){
     drumkitKick    (1,2,   "x----x--", SX); 
 }
 
-int drumbeatBridgeSoft(){
+void drumbeatBridgeSoft(){
     int spot = getLocation();
     
     drumkitHHClosed(1,0.4,"---x--x-", SX); setLocation(spot);
     drumkitKick    (1,2,  "x-------", SX); 
 }
 
-int bridge(){
+void bridge(){
     int i;
     for(i = 1; i <= 3; i++){
         drumbeatBridgeSoft();
@@ -70,7 +67,7 @@ int bridge(){
     drumkitKick    (1,2,   "x-x-x-x-", SX); 
 }
 
-int chorus(){
+void chorus(){
     int i;
 
     for(i = 0; i < 24; i++){
@@ -78,7 +75,7 @@ int chorus(){
     }
 }
 
-int verse(){
+void verse(){
     int i;
 
     for(i = 0; i < 16; i++){
@@ -90,12 +87,12 @@ int verse(){
 int
 main()
     {
-    int instrument;
-    int octave = 4;
+//    int instrument;
+//    int octave = 4;
 
     songInit();
 
-    instrument = readScale(dir,base);
+//    instrument = readScale(dir,base);
 
     setTempo(130);
     setTime(4,4);
@@ -106,10 +103,12 @@ main()
     openOutput("drums.rra",0,0);
 
     verse();
-//    chorus();
-//    bridge();
-
-    int location = getLocation();
+    chorus();
+    verse();
+    chorus();
+    bridge();
+    verse();
+    chorus();
 
     closeOutput();
     
