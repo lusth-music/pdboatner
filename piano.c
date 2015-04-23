@@ -13,8 +13,6 @@
 char *PROGRAM_NAME = "piano";
 char *PROGRAM_VERSION = "0.01";
 
-static int last = 0;
-
 int chorusChords(int instrument, int octave){
 
     int progression[16] = {1,1,3,3,4,4,5,5,1,1,3,3,4,4,5,5};
@@ -112,6 +110,38 @@ int chorusChords(int instrument, int octave){
 
     return 1;
 }
+
+int introChords(int instrument, int octave){
+    setAmplitude(0.30);
+    c(1, Qd, instrument, octave);
+    setAmplitude(0.25);
+    c(1, Qd, instrument, octave);
+    c(1, Q, instrument, octave);
+
+    setAmplitude(0.30);
+    ci1(5, Qd, instrument, octave-1); 
+    setAmplitude(0.25);
+    ci1(5, Qd, instrument, octave-1); 
+    ci1(5, Q, instrument, octave-1); 
+
+
+    setAmplitude(0.30);
+    c(6, Qd, instrument, octave-1);
+    setAmplitude(0.25);
+    c(6, Qd, instrument, octave-1);
+    c(6, Q, instrument, octave-1);
+
+    setAmplitude(0.30);
+    ci1(4, Qd, instrument, octave-1); 
+    setAmplitude(0.25);
+    ci1(4, Qd, instrument, octave-1); 
+    ci1(4, Q, instrument, octave-1); 
+
+    setAmplitude(0.30);
+
+    return 1;
+}
+
 
 int verseChords(int instrument, int octave){
 
@@ -214,6 +244,8 @@ int bridgeChords(int instrument, int octave){
     b(5, Qd, instrument, octave, "x--", "--Y", "-Y-", SX);
     b(5, Qd, instrument, octave, "x--", "--Y", "-Y-", SX);
     b(5, Q, instrument, octave, "x--", "--Y", SX);
+
+    return 1;
 }
 
 int
@@ -235,6 +267,7 @@ main()
     openOutput("piano.rra",0,0);
 
 
+    introChords(instrument, octave);
     verseChords(instrument, octave);
     chorusChords(instrument, octave);
     verseChords(instrument, octave);

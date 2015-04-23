@@ -83,6 +83,13 @@ void verse(){
     }
 }
 
+void intro(){
+    int i;
+    for(i = 0; i < 4; i++){
+        drumbeatVerse();
+    }
+}
+
 
 int
 main()
@@ -102,6 +109,7 @@ main()
 
     openOutput("drums.rra",0,0);
 
+    intro();
     verse();
     chorus();
     verse();
