@@ -14,7 +14,7 @@ char *PROGRAM_NAME = "bass";
 char *PROGRAM_VERSION = "0.01";
 
 static float soft = 0.2;
-static float full = 0.35;
+static float full = 0.30;
 
 void intro(int instrument, int octave){
     setAmplitude(soft);
@@ -98,7 +98,8 @@ void chorus(int instrument, int octave, int final){
 
     
     if(final==1){
-        n(1, H, instrument, octave, 0);
+        setAmplitude(soft);
+        n(1, Hd, instrument, octave, 0);
     } else {
         n(1, W, instrument, octave, 0);
 
@@ -152,13 +153,13 @@ main()
     openOutput("bass.rra",0,0);
 
 
-//    intro(instrument, octave);
- //   verse(instrument, octave);
- //   chorus(instrument, octave, 0);
- //   verse(instrument, octave);
- //   chorus(instrument, octave, 0);
- //   bridge(instrument, octave);
- //   verse(instrument, octave);
+    intro(instrument, octave);
+    verse(instrument, octave);
+    chorus(instrument, octave, 0);
+    verse(instrument, octave);
+    chorus(instrument, octave, 0);
+    bridge(instrument, octave);
+    verse(instrument, octave);
     chorus(instrument, octave, 1);
 
 

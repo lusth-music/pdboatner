@@ -75,9 +75,11 @@ void chorus(int final){
     int i;
 
     if(final==1){
-        for(i = 0; i < 22; i++){
+        for(i = 0; i < 20; i++){
             drumbeatChorus();
         }
+        drumkitHHOpen  (1,0.5,"x-------", SX);
+        drumkitHHOpen  (1,0.5,"x-------", SX);
         drumkitHHOpen  (1,0.5,"x-------", SX);
     } else {
         for(i = 0; i < 24; i++){
@@ -130,13 +132,13 @@ main()
 
     openOutput("drums.rra",0,0);
 
- //   intro();
- //   verse(0);
- //   chorus(0);
- //   verse(0);
- //   chorus(0);
- //   bridge();
- //   verse(1);
+    intro();
+    verse(0);
+    chorus(0);
+    verse(0);
+    chorus(0);
+    bridge();
+    verse(1); 
     chorus(1);
 
     closeOutput();

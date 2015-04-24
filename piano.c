@@ -79,30 +79,48 @@ void chorusChords(int instrument, int octave, int final){
     n(5, Q, instrument, octave-2, 0); setAmplitude(volumeFull);
     b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
     
-    for(i = 0; i < 2; i++){
+
+    if(final==1){
         setAmplitude(volumeSoft);
         n(4, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
         backwards(Qd); 
         cchord(4, Qd, instrument, octave-1, "Xxx");
         cchord(4, Q, instrument, octave-1, "Xxx");
         b     (4, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
-    }
 
-    setAmplitude(volumeSoft);
-    n(5, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
-    backwards(Qd); 
-    cchord(5, Qd, instrument, octave-1, "Xsx");
-    cchord(5, Q, instrument, octave-1, "Xxx");
-    b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
+        setAmplitude(volumeSoft);
+        n(4, W, instrument, octave - 2, 0); setAmplitude(volumeFull);
+        backwards(W); 
+        cchord(4, W, instrument, octave-1, "Xxx");
+ 
+        setAmplitude(volumeSoft);
+        n(5, W, instrument, octave - 2, 0); setAmplitude(volumeFull);
+        backwards(W); 
+        cchord(5, W, instrument, octave-1, "Xsx");
 
-
-    if(final==1){
         cchord(1, Qd, instrument, octave, "xpx");
         backwards(Qd);
         setAmplitude(volumeSoft);
         n(1, Qd, instrument, octave - 1, 0); setAmplitude(volumeFull);
-        c(1, Q, instrument, octave);
+        c(1, Qd + Q, instrument, octave);
     } else {
+        for(i = 0; i < 2; i++){
+            setAmplitude(volumeSoft);
+            n(4, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
+            backwards(Qd); 
+            cchord(4, Qd, instrument, octave-1, "Xxx");
+            cchord(4, Q, instrument, octave-1, "Xxx");
+            b     (4, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
+        }
+
+        setAmplitude(volumeSoft);
+        n(5, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
+        backwards(Qd); 
+        cchord(5, Qd, instrument, octave-1, "Xsx");
+        cchord(5, Q, instrument, octave-1, "Xxx");
+        b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
+
+
         c(1, Qd, instrument, octave);
         backwards(Qd);
         setAmplitude(volumeSoft);
@@ -267,14 +285,13 @@ main()
 
     openOutput("piano.rra",0,0);
 
-
- //   introChords(instrument, octave);
- //   verseChords(instrument, octave);
- //   chorusChords(instrument, octave, 0);
- //   verseChords(instrument, octave);
- //   chorusChords(instrument, octave, 0);
- //   bridgeChords(instrument, octave);
- //   verseChords(instrument, octave);
+    introChords(instrument, octave);
+    verseChords(instrument, octave);
+    chorusChords(instrument, octave, 0);
+    verseChords(instrument, octave);
+    chorusChords(instrument, octave, 0);
+    bridgeChords(instrument, octave);
+    verseChords(instrument, octave);
     chorusChords(instrument, octave, 1);
 
 
