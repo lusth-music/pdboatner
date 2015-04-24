@@ -13,7 +13,8 @@
 char *PROGRAM_NAME = "piano";
 char *PROGRAM_VERSION = "0.01";
 
-int chorusChords(int instrument, int octave){
+// final- 1 means play the final chorus, 0 means normal
+void chorusChords(int instrument, int octave, int final){
 
     int progression[16] = {1,1,3,3,4,4,5,5,1,1,3,3,4,4,5,5};
 
@@ -94,24 +95,32 @@ int chorusChords(int instrument, int octave){
     cchord(5, Q, instrument, octave-1, "Xxx");
     b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
 
-    c(1, Qd, instrument, octave);
-    backwards(Qd);
-    setAmplitude(volumeSoft);
-    n(1, Qd, instrument, octave - 1, 0); setAmplitude(volumeFull);
-    c(1, Q, instrument, octave);
-    b(1, Qd, instrument, octave, "x--", "-x-", "--x", SX);
 
-    setAmplitude(volumeSoft);
-    n(5, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
-    backwards(Qd); 
-    cchord(5, Qd, instrument, octave-1, "Xxx");
-    cchord(5, Q, instrument, octave-1, "Xxx");
-    b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
+    if(final==1){
+        cchord(1, Qd, instrument, octave, "xpx");
+        backwards(Qd);
+        setAmplitude(volumeSoft);
+        n(1, Qd, instrument, octave - 1, 0); setAmplitude(volumeFull);
+        c(1, Q, instrument, octave);
+    } else {
+        c(1, Qd, instrument, octave);
+        backwards(Qd);
+        setAmplitude(volumeSoft);
+        n(1, Qd, instrument, octave - 1, 0); setAmplitude(volumeFull);
+        c(1, Q, instrument, octave);
+        b(1, Qd, instrument, octave, "x--", "-x-", "--x", SX);
 
-    return 1;
+        setAmplitude(volumeSoft);
+        n(5, Qd, instrument, octave - 2, 0); setAmplitude(volumeFull);
+        backwards(Qd); 
+        cchord(5, Qd, instrument, octave-1, "Xxx");
+        cchord(5, Q, instrument, octave-1, "Xxx");
+        b     (5, Qd, instrument, octave-1, "-x-", "--x", "X--", SX);
+    }
+
 }
 
-int introChords(int instrument, int octave){
+void introChords(int instrument, int octave){
     setAmplitude(0.30);
     c(1, Qd, instrument, octave);
     setAmplitude(0.25);
@@ -138,14 +147,10 @@ int introChords(int instrument, int octave){
     ci1(4, Q, instrument, octave-1); 
 
     setAmplitude(0.30);
-
-    return 1;
 }
 
 
-int verseChords(int instrument, int octave){
-
-    //TODO Change this. Similar to chorus. Follow suspensions and such like when playing the piano.
+void verseChords(int instrument, int octave){
 
     int i;
     
@@ -201,11 +206,9 @@ int verseChords(int instrument, int octave){
     setAmplitude(0.25);
     ci1(5, Qd, instrument, octave-1); 
     ci1(5, Q, instrument, octave-1); 
-
-    return 1;
 }
 
-int bridgeChords(int instrument, int octave){
+void bridgeChords(int instrument, int octave){
     float volumeFull = 0.3;
     float volumeSoft = 0.15;
 
@@ -244,8 +247,6 @@ int bridgeChords(int instrument, int octave){
     b(5, Qd, instrument, octave, "x--", "--Y", "-Y-", SX);
     b(5, Qd, instrument, octave, "x--", "--Y", "-Y-", SX);
     b(5, Q, instrument, octave, "x--", "--Y", SX);
-
-    return 1;
 }
 
 int
@@ -267,17 +268,17 @@ main()
     openOutput("piano.rra",0,0);
 
 
-    introChords(instrument, octave);
-    verseChords(instrument, octave);
-    chorusChords(instrument, octave);
-    verseChords(instrument, octave);
-    chorusChords(instrument, octave);
-    bridgeChords(instrument, octave);
-    verseChords(instrument, octave);
-    chorusChords(instrument, octave);
+ //   introChords(instrument, octave);
+ //   verseChords(instrument, octave);
+ //   chorusChords(instrument, octave, 0);
+ //   verseChords(instrument, octave);
+ //   chorusChords(instrument, octave, 0);
+ //   bridgeChords(instrument, octave);
+ //   verseChords(instrument, octave);
+    chorusChords(instrument, octave, 1);
 
 
     closeOutput();
     
     return 0;
-    }
+}

@@ -13,6 +13,10 @@
 char *PROGRAM_NAME = "drums";
 char *PROGRAM_VERSION = "0.01";
 
+void drumbeatVerseSoft(){
+    drumkitHHClosed(1,0.4,"---x--x-", SX);
+}
+
 void drumbeatVerse(){
     int spot = getLocation();
     
@@ -66,20 +70,37 @@ void bridge(){
     drumkitSnare   (1,1,   "xxxxxxxx", SX); setLocation(spot);
     drumkitKick    (1,2,   "x-x-x-x-", SX); 
 }
-
-void chorus(){
+// final- 1 means final, 0 means normal
+void chorus(int final){
     int i;
 
-    for(i = 0; i < 24; i++){
-        drumbeatChorus();
+    if(final==1){
+        for(i = 0; i < 22; i++){
+            drumbeatChorus();
+        }
+        drumkitHHOpen  (1,0.5,"x-------", SX);
+    } else {
+        for(i = 0; i < 24; i++){
+            drumbeatChorus();
+        }
     }
 }
 
-void verse(){
+// silent- 0 means play normally. 1 means play the first 8 measures silently
+void verse(int silent){
     int i;
 
-    for(i = 0; i < 16; i++){
-        drumbeatVerse();
+    if(silent==1){
+        for(i = 0; i < 8; i++){
+            drumbeatVerseSoft();
+        }
+        for(i = 0; i < 8; i++){
+            drumbeatVerse();
+        }
+    } else {
+        for(i = 0; i < 16; i++){
+            drumbeatVerse();
+        }
     }
 }
 
@@ -109,14 +130,14 @@ main()
 
     openOutput("drums.rra",0,0);
 
-    intro();
-    verse();
-    chorus();
-    verse();
-    chorus();
-    bridge();
-    verse();
-    chorus();
+ //   intro();
+ //   verse(0);
+ //   chorus(0);
+ //   verse(0);
+ //   chorus(0);
+ //   bridge();
+ //   verse(1);
+    chorus(1);
 
     closeOutput();
     

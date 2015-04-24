@@ -1,6 +1,6 @@
 #Place the names of all your tracks here (as RRA filenames)
 
-RRA = piano.rra drums.rra
+RRA = piano.rra drums.rra bass.rra
 SRRA = stereo.rra
 INCLUDE=/usr/local/include/songlib/
 LIB=/usr/local/lib/
@@ -24,6 +24,9 @@ playmix : mix.rra
 
 playdrums : drums.rra
 		rplay drums.rra
+
+playbass : bass.rra
+		rplay bass.rra
 
 s-quickstart.rra : quickstart.rra
 		rrastereo -r quickstart.rra s-quickstart.rra
